@@ -9,6 +9,7 @@ type Mutable<T> = T extends Primitive ? T
     -readonly [K in keyof T]: Mutable<T[K]>;
   };
 
+// E.g. literal(['a', 'b'] as const) -> ['a', 'b'] instead of string[]
 export default function literal<T>(val: T): Mutable<T> {
   return val as Mutable<T>;
 }
